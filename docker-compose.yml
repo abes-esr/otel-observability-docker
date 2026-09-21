@@ -2,6 +2,7 @@ version:  "3.0"
 services:
   
   otel-collector:
+    container_name: otel-observability-otel-collector
     image: otel/opentelemetry-collector-contrib:0.157.0
     restart: always 
     volumes:
@@ -20,6 +21,7 @@ services:
       - victoria-metrics 
 
   victoria-traces:
+    container_name: otel-observability-victoria-traces
     image: victoriametrics/victoria-traces:v0.10.0
     restart: always
     command:
@@ -33,6 +35,7 @@ services:
       - ./volumes/victoria-traces-data:/victoria-traces-data
 
   victoria-logs:
+    container_name: otel-observability-victoria-logs
     image: victoriametrics/victoria-logs:latest
     restart: always
     command:
@@ -46,6 +49,7 @@ services:
       - ./volumes/victoria-logs-data:/victoria-logs-data
 
   victoria-metrics:
+    container_name: otel-observability-victoria-metrics
     image: victoriametrics/victoria-metrics:v1.144.0
     command:
       - "--retentionPeriod=8w"
@@ -60,6 +64,7 @@ services:
     restart: unless-stopped
 
   grafana:
+    container_name: otel-observability-grafana
     image: grafana/grafana:13.1.0-24320339380
     restart: always
     ports:
