@@ -5,7 +5,7 @@ services:
     image: otel/opentelemetry-collector-contrib:0.157.0
     restart: always 
     volumes:
-      - ./config/otel-collector-config-${env}.yaml:/etc/otelcol-contrib/config.yaml
+      - ./config/otel-collector/otel-collector-config-${env}.yaml:/etc/otelcol-contrib/config.yaml
     ports:
       - 1888:1888 # pprof extension
       - 8888:8888 # Prometheus metrics exposed by the Collector
@@ -69,7 +69,12 @@ services:
       - ./provisioning/datasources:/etc/grafana/provisioning/datasources
       - ./provisioning/dashboards:/etc/grafana/provisioning/dashboards
       - ./dashboards:/var/lib/grafana/dashboards 
+      - ./config/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ./config/grafana/ldap.toml:/etc/grafana/ldap.toml
     depends_on:
       - otel-collector
     environment:
       GF_INSTALL_PLUGINS: "victoriametrics-metrics-datasource,victoriametrics-logs-datasource"
+      GRAFANA_BIND_DN: ${GRAFANA_BIND_DN}
+      GRAFANA_BIND_PASSWORD: ${GRAFANA_BIND_PASSWORD}
+      GRAFANA_LDAP_HOST: ${GRAFANA_LDAP_HOST}
