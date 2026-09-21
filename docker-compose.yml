@@ -75,6 +75,8 @@ services:
       - otel-collector
     environment:
       GF_INSTALL_PLUGINS: "victoriametrics-metrics-datasource,victoriametrics-logs-datasource"
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
       GRAFANA_BIND_DN: ${GRAFANA_BIND_DN}
       GRAFANA_BIND_PASSWORD: ${GRAFANA_BIND_PASSWORD}
       GRAFANA_LDAP_HOST: ${GRAFANA_LDAP_HOST}
