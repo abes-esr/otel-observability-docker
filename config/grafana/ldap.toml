@@ -1,0 +1,34 @@
+[[servers]]
+host = "${GRAFANA_LDAP_HOST}"
+port = 636
+use_ssl = true 
+start_tls = false 
+ssl_skip_verify = true
+
+bind_dn = "${GRAFANA_BIND_DN}"
+bind_password = "${GRAFANA_BIND_PASSWORD}"
+
+timeout = 10
+
+search_filter = "(&(sAMAccountName=%s)(objectCategory=user))"
+
+search_base_dns = ["ou=personnels,ou=utilisateurs,dc=levant,dc=abes,dc=fr"]
+
+
+[servers.attributes]
+username = "sAMAccountName"
+email = "mail"
+member_of = "memberOf"
+
+[[servers.group_mappings]]
+group_dn = "CN=SIRE,OU=DSIN,OU=Groupes de securite,DC=levant,DC=abes,DC=fr"
+org_role = "Admin"
+grafana_admin = true
+
+[[servers.group_mappings]]
+group_dn = "CN=docker,OU=IPA,OU=Groupes de securite,DC=levant,DC=abes,DC=fr"
+org_role = "Editor"
+
+[[servers.group_mappings]]
+group_dn = "*"
+org_role = "Viewer"
