@@ -1081,6 +1081,7 @@
                         "editorMode": "code",
                         "expr": "service.name:in($service_name) service.namespace:in($service_namespace)",
                         "maxLines": 800,
+                        "packJson": false,
                         "queryType": "instant"
                       },
                       "version": "v0"
@@ -1113,6 +1114,12 @@
                       "jsonPaths": [
                         {
                           "path": "severity_text"
+                        },
+                        {
+                          "path": "trace_id"
+                        },
+                        {
+                          "path": "scope.name"
                         }
                       ],
                       "keepTime": false,
@@ -1140,14 +1147,18 @@
                         "detected_level": 4,
                         "id": 5,
                         "labels": 3,
+                        "scope.name": 8,
                         "severity_text": 1,
                         "streamId": 7,
-                        "streams": 6
+                        "streams": 6,
+                        "trace_id": 9
                       },
                       "orderByMode": "manual",
                       "renameByName": {
+                        "scope.name": "Scope",
                         "severity": "",
-                        "severity_text": "Severity"
+                        "severity_text": "Severity",
+                        "trace_id": "Trace"
                       }
                     }
                   }
@@ -1263,13 +1274,37 @@
                         "value": 97
                       }
                     ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Trace",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "links",
+                        "value": [
+                          {
+                            "targetBlank": true,
+                            "title": "Voir la trace",
+                            "url": "/explore?schemaVersion=1&panes={\"uki\":{\"datasource\":\"${tempo_datasource}\",\"queries\":[{\"query\":\"${__data.fields.Trace}\",\"queryType\":\"traceql\",\"datasource\":{\"type\":\"tempo\",\"uid\":\"P00A3D75A1D30EF0D\"},\"refId\":\"A\"}],\"range\":{\"from\":\"${__from}\",\"to\":\"${__to}\"}}}&orgId=1"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               },
               "options": {
                 "cellHeight": "sm",
                 "showHeader": true,
-                "sortBy": []
+                "sortBy": [
+                  {
+                    "desc": true,
+                    "displayName": "Time"
+                  }
+                ]
               }
             },
             "version": "13.1.0-24320339380"
@@ -2487,7 +2522,7 @@
                     "spanNulls": false,
                     "stacking": {
                       "group": "A",
-                      "mode": "none"
+                      "mode": "normal"
                     },
                     "thresholdsStyle": {
                       "mode": "off"
