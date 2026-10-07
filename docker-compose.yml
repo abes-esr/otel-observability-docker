@@ -25,7 +25,7 @@ services:
     image: victoriametrics/victoria-traces:v0.10.0
     restart: always
     command:
-      - "--retentionPeriod=8w"
+      - "--retentionPeriod=${VT_RETENTION_PERIOD}"
       - "--storageDataPath=/victoria-traces-data"
       - "--httpListenAddr=:10428"
       - "--servicegraph.enableTask=true"
@@ -39,7 +39,7 @@ services:
     image: victoriametrics/victoria-logs:latest
     restart: always
     command:
-      - "--retentionPeriod=8w"
+      - "--retentionPeriod=${VL_RETENTION_PERIOD}"
       - "--storageDataPath=/victoria-logs-data"
       - "--httpListenAddr=:9428"
       - "--loggerLevel=INFO"
@@ -52,7 +52,7 @@ services:
     container_name: otel-observability-victoria-metrics
     image: victoriametrics/victoria-metrics:v1.144.0
     command:
-      - "--retentionPeriod=8w"
+      - "--retentionPeriod=${VM_RETENTION_PERIOD}"
       - "--storageDataPath=/victoria-metrics-data"
       - "--httpListenAddr=:8428"
       - "--opentelemetry.usePrometheusNaming=true"
