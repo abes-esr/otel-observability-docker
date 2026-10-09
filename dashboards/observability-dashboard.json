@@ -4804,7 +4804,20 @@
         ]
       }
     },
-    "links": [],
+    "links": [
+      {
+        "asDropdown": true,
+        "icon": "bolt",
+        "includeVars": true,
+        "keepTime": true,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Logs en Live",
+        "tooltip": "",
+        "type": "link",
+        "url": "/d/dovd2pk/observability-live-logs?viewPanel=panel-3"
+      }
+    ],
     "liveNow": false,
     "preload": false,
     "tags": ["otel-demo"],
@@ -4836,14 +4849,14 @@
           "allValue": ".*",
           "allowCustomValue": false,
           "current": {
-            "text": ["All"],
-            "value": ["$__all"]
+            "text": "theses",
+            "value": "theses"
           },
           "definition": "",
           "description": "Service namespace.",
           "hide": "dontHide",
           "includeAll": false,
-          "label": "Namespace",
+          "label": "App",
           "multi": false,
           "name": "service_namespace",
           "options": [],
@@ -4875,14 +4888,14 @@
           "allValue": ".*",
           "allowCustomValue": false,
           "current": {
-            "text": "theses-batch-indexation-theses",
-            "value": "theses-batch-indexation-theses"
+            "text": "theses-api-recherche",
+            "value": "theses-api-recherche"
           },
           "definition": "service.namespace:in($service_namespace)",
           "description": "Service name.\nResource attribute `service.name`.",
           "hide": "dontHide",
           "includeAll": false,
-          "label": "Name",
+          "label": "Service",
           "multi": false,
           "name": "service_name",
           "options": [],
@@ -5030,8 +5043,8 @@
         "spec": {
           "allowCustomValue": true,
           "current": {
-            "text": "theses-api-export",
-            "value": "theses-api-export"
+            "text": "theses-api-recherche",
+            "value": "theses-api-recherche"
           },
           "definition": "label_values(http_server_request_duration_seconds_bucket{service_namespace=~\"$service_namespace\", service_name=~\"$service_name\"}, service_name)",
           "description": "Vérifie si le service en question possède des metric HTTPS server. Permet de faire la distinction entre un batch et une API par exemple.",
