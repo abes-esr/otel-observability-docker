@@ -1,0 +1,527 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "dovd2pk",
+    "namespace": "default",
+    "uid": "7d63cf82-5bec-448f-b27f-5da3fd18acee",
+    "resourceVersion": "1791555726844999",
+    "generation": 12,
+    "creationTimestamp": "2026-10-09T13:14:09Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "861934118219776"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:bfztsix24wrnkb",
+      "grafana.app/folder": "",
+      "grafana.app/saved-from-ui": "Grafana v13.1.0-24320339380 (b2bc44c3)",
+      "grafana.app/updatedBy": "user:bfztsix24wrnkb",
+      "grafana.app/updatedTimestamp": "2026-10-09T14:22:06Z"
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "-- Grafana --"
+            },
+            "spec": {
+              "limit": 100,
+              "matchAny": false,
+              "tags": [],
+              "type": "dashboard"
+            }
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
+      }
+    ],
+    "cursorSync": "Crosshair",
+    "description": "APM dashboard for monitoring OpenTelemetry-based services.",
+    "editable": true,
+    "elements": {
+      "panel-3": {
+        "kind": "Panel",
+        "spec": {
+          "id": 3,
+          "title": "Logs live",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "victoriametrics-logs-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "PD775F2863313E6C7"
+                      },
+                      "spec": {
+                        "direction": "desc",
+                        "editorMode": "code",
+                        "expr": "service.name:in(${service_name}) AND severity_text:in(${severity})",
+                        "queryType": "instant",
+                        "templateBuilder": {
+                          "pipes": [
+                            {
+                              "activeExtensionKeys": [],
+                              "id": "pipe-1791552601193-2",
+                              "segments": [
+                                {
+                                  "type": "text",
+                                  "value": "{"
+                                },
+                                {
+                                  "displayHint": "stream_field",
+                                  "id": "streamFieldName-1791552607444-3",
+                                  "optionSource": "streamFieldNames",
+                                  "role": "streamFieldName",
+                                  "type": "placeholder",
+                                  "value": "service.name"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " in("
+                                },
+                                {
+                                  "dependsOn": "streamFieldName-1791552607444-3",
+                                  "displayHint": "values",
+                                  "id": "streamValues-1791552607444-4",
+                                  "multi": true,
+                                  "multiValues": [],
+                                  "optionSource": "streamFieldValues",
+                                  "role": "streamFieldValue",
+                                  "type": "placeholder"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ")"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "}"
+                                }
+                              ],
+                              "tabOrder": [
+                                "streamFieldName-1791552607444-3",
+                                "streamValues-1791552607444-4"
+                              ],
+                              "templateType": "stream"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "logs",
+            "version": "13.1.0-24320339380",
+            "spec": {
+              "options": {
+                "dedupStrategy": "exact",
+                "detailsMode": "sidebar",
+                "displayedFields": [],
+                "enableInfiniteScrolling": true,
+                "enableLogDetails": false,
+                "fontSize": "small",
+                "prettifyLogMessage": true,
+                "showControls": true,
+                "showFieldSelector": true,
+                "showLabels": false,
+                "showLevel": true,
+                "showTime": true,
+                "sortOrder": "Descending",
+                "syntaxHighlighting": true,
+                "timestampResolution": "ms",
+                "unwrappedColumns": false,
+                "wrapLogMessage": true
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      }
+    },
+    "layout": {
+      "kind": "AutoGridLayout",
+      "spec": {
+        "maxColumnCount": 1,
+        "columnWidthMode": "standard",
+        "rowHeightMode": "standard",
+        "items": [
+          {
+            "kind": "AutoGridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-3"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "title": "Agrandir",
+        "type": "link",
+        "icon": "external link",
+        "tooltip": "",
+        "url": "/d/dovd2pk/observability-live-logs?viewPanel=panel-3",
+        "tags": [],
+        "asDropdown": true,
+        "targetBlank": false,
+        "includeVars": true,
+        "keepTime": true
+      },
+      {
+        "title": "Plein Ecran",
+        "type": "link",
+        "icon": "external link",
+        "tooltip": "",
+        "url": "/d/dovd2pk/observability-live-logs?viewPanel=panel-3&kiosk",
+        "tags": [],
+        "asDropdown": true,
+        "targetBlank": true,
+        "includeVars": true,
+        "keepTime": true
+      }
+    ],
+    "liveNow": true,
+    "preload": false,
+    "tags": ["otel-demo"],
+    "timeSettings": {
+      "timezone": "browser",
+      "from": "now-1h",
+      "to": "now",
+      "autoRefresh": "auto",
+      "autoRefreshIntervals": [],
+      "hideTimepicker": false,
+      "fiscalYearStartMonth": 0
+    },
+    "title": "Observability Live Logs",
+    "variables": [
+      {
+        "kind": "DatasourceVariable",
+        "spec": {
+          "name": "tempo_datasource",
+          "pluginId": "tempo",
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "current": {
+            "text": "VictoriaTracesTempo",
+            "value": "P00A3D75A1D30EF0D"
+          },
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "label": "Traces",
+          "hide": "hideVariable",
+          "skipUrlSync": false,
+          "description": "OpenTelemetry traces",
+          "allowCustomValue": false
+        }
+      },
+      {
+        "kind": "DatasourceVariable",
+        "spec": {
+          "name": "prometheus_datasource",
+          "pluginId": "victoriametrics-metrics-datasource",
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "current": {
+            "text": "VictoriaMetrics",
+            "value": "P4169E866C3094E38"
+          },
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "label": "Metrics",
+          "hide": "hideVariable",
+          "skipUrlSync": false,
+          "description": "OpenTelemetry metrics.",
+          "allowCustomValue": false
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "name": "deployment_environment_name",
+          "query": ".*",
+          "current": {
+            "text": ".*",
+            "value": ".*"
+          },
+          "label": "Environment",
+          "hide": "hideVariable",
+          "skipUrlSync": true,
+          "description": "Variable réservée"
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "hostname",
+          "current": {
+            "text": "diplotaxis1-prod.v102.abes.fr",
+            "value": "diplotaxis1-prod.v102.abes.fr"
+          },
+          "label": "Hôte",
+          "hide": "hideVariable",
+          "refresh": "onTimeRangeChanged",
+          "skipUrlSync": false,
+          "description": "Hôte",
+          "query": {
+            "kind": "DataQuery",
+            "group": "victoriametrics-logs-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "PD775F2863313E6C7"
+            },
+            "spec": {
+              "field": "host.name",
+              "limit": 5,
+              "query": "service.name:$service_name",
+              "refId": "VictoriaLogsVariableQueryEditor-VariableQuery",
+              "type": "fieldValue"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "service.name:$service_name",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": true,
+          "staticOptionsOrder": "before"
+        }
+      },
+      {
+        "kind": "DatasourceVariable",
+        "spec": {
+          "name": "victorialogs_datasource",
+          "pluginId": "victoriametrics-logs-datasource",
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "current": {
+            "text": "VictoriaLogs",
+            "value": "PD775F2863313E6C7"
+          },
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "label": "Logs",
+          "hide": "hideVariable",
+          "skipUrlSync": false,
+          "description": "OpenTelemetry logs.",
+          "allowCustomValue": false
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "has_http_server_metrics",
+          "current": {
+            "text": "theses-api-recherche",
+            "value": "theses-api-recherche"
+          },
+          "hide": "hideVariable",
+          "refresh": "onTimeRangeChanged",
+          "skipUrlSync": false,
+          "description": "Métriques HTTP",
+          "query": {
+            "kind": "DataQuery",
+            "group": "prometheus",
+            "version": "v0",
+            "datasource": {
+              "name": "PBFA97CFB590B2093"
+            },
+            "spec": {
+              "qryType": 5,
+              "query": "label_values(http_server_request_duration_seconds_bucket{service_name=~\"$service_name\"}, service_name)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "label_values(http_server_request_duration_seconds_bucket{service_name=~\"$service_name\"}, service_name)",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": true
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "cpu_host_count",
+          "current": {
+            "text": "24",
+            "value": "24"
+          },
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "victoriametrics-metrics-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "P4169E866C3094E38"
+            },
+            "spec": {
+              "qryType": 3,
+              "query": "query_result(count(system_cpu_time_seconds_total{host_name=~\"$hostname\", state=\"idle\"}))",
+              "refId": "VariableQueryEditor-VariableQuery"
+            }
+          },
+          "regex": "/(\\d+)/",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "query_result(count(system_cpu_time_seconds_total{host_name=~\"$hostname\", state=\"idle\"}))",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "name": "constant0",
+          "query": "",
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "hide": "hideVariable",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "namespace",
+          "current": {
+            "text": "theses",
+            "value": "theses"
+          },
+          "label": "App",
+          "hide": "dontHide",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "victoriametrics-logs-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "PD775F2863313E6C7"
+            },
+            "spec": {
+              "field": "service.namespace",
+              "limit": 25,
+              "query": "",
+              "refId": "VictoriaLogsVariableQueryEditor-VariableQuery",
+              "type": "fieldValue"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": true
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "service_name",
+          "current": {
+            "text": "theses-api-recherche",
+            "value": "theses-api-recherche"
+          },
+          "label": "Service",
+          "hide": "dontHide",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "victoriametrics-logs-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "PD775F2863313E6C7"
+            },
+            "spec": {
+              "field": "service.name",
+              "limit": 25,
+              "query": "service.namespace:in(${namespace})",
+              "refId": "VictoriaLogsVariableQueryEditor-VariableQuery",
+              "type": "fieldValue"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "service.namespace:in(${namespace})",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": true
+        }
+      },
+      {
+        "kind": "CustomVariable",
+        "spec": {
+          "name": "severity",
+          "query": "TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "options": [],
+          "multi": false,
+          "includeAll": true,
+          "allValue": ".*",
+          "label": "Severity",
+          "hide": "dontHide",
+          "skipUrlSync": false,
+          "allowCustomValue": true,
+          "valuesFormat": "csv"
+        }
+      }
+    ]
+  }
+}
