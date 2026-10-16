@@ -4812,10 +4812,46 @@
         "keepTime": true,
         "tags": [],
         "targetBlank": true,
-        "title": "Logs en Live",
+        "title": "Logs en direct",
         "tooltip": "",
         "type": "link",
         "url": "/d/dovd2pk/observability-live-logs?viewPanel=panel-3"
+      },
+      {
+        "asDropdown": true,
+        "icon": "dashboard",
+        "includeVars": false,
+        "keepTime": true,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Traces lentes",
+        "tooltip": "",
+        "type": "link",
+        "url": "/a/grafana-exploretraces-app/explore?var-ds=P00A3D75A1D30EF0D&var-primarySignal=nestedSetParent%3C0&var-filters=resource.service.name%7C%3D%7C${service_name}&var-metric=duration&var-groupBy=resource.service.namespace&var-durationPercentiles=0.9&actionView=traceList"
+      },
+      {
+        "asDropdown": true,
+        "icon": "dashboard",
+        "includeVars": false,
+        "keepTime": true,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Traces en erreur",
+        "tooltip": "",
+        "type": "link",
+        "url": "/a/grafana-exploretraces-app/explore?var-ds=P00A3D75A1D30EF0D&var-primarySignal=nestedSetParent%3C0&var-filters=resource.service.name%7C%3D%7C${service_name}&var-metric=errors&var-groupBy=resource.service.namespace&var-durationPercentiles=0.9&actionView=traceList"
+      },
+      {
+        "asDropdown": true,
+        "icon": "dashboard",
+        "includeVars": false,
+        "keepTime": true,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Toutes les métriques",
+        "tooltip": "",
+        "type": "link",
+        "url": "/a/grafana-metricsdrilldown-app/drilldown?var-metrics_filters=service_name%7C%3D%7C{service_name}&var-filters=service_name%7C%3D%7C${service_name}&var-labelsWingman=%28none%29&layout=grid&var-metrics-reducer-sort-by=alerting-usage&var-ds=PBFA97CFB590B2093&var-wingmanLabelValues=$__all"
       }
     ],
     "liveNow": false,
@@ -4836,7 +4872,7 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-24h",
+      "from": "now-6h",
       "hideTimepicker": false,
       "timezone": "browser",
       "to": "now"
@@ -4983,8 +5019,8 @@
         "spec": {
           "allowCustomValue": true,
           "current": {
-            "text": "diplotaxis1-prod.v102.abes.fr",
-            "value": "diplotaxis1-prod.v102.abes.fr"
+            "text": "diplotaxis1-dev.v212.abes.fr",
+            "value": "diplotaxis1-dev.v212.abes.fr"
           },
           "definition": "service.name:$service_name",
           "description": "Permet d'afficher que les metrics de l'hôte sur lequel tourne le service_name",
@@ -5078,8 +5114,8 @@
         "spec": {
           "allowCustomValue": true,
           "current": {
-            "text": "24",
-            "value": "24"
+            "text": "10",
+            "value": "10"
           },
           "definition": "query_result(count(system_cpu_time_seconds_total{host_name=~\"$hostname\", state=\"idle\"}))",
           "hide": "hideVariable",
