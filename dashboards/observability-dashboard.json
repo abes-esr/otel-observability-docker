@@ -4827,7 +4827,7 @@
         "title": "Traces lentes",
         "tooltip": "",
         "type": "link",
-        "url": "/a/grafana-exploretraces-app/explore?var-ds=P00A3D75A1D30EF0D&var-primarySignal=nestedSetParent%3C0&var-filters=resource.service.name%7C%3D%7C${service_name}&var-metric=duration&var-groupBy=resource.service.namespace&var-durationPercentiles=0.9&actionView=traceList"
+        "url": "/a/grafana-exploretraces-app/explore?var-ds=P00A3D75A1D30EF0D&var-primarySignal=true&var-filters=resource.service.name%7C%3D%7C${service_name}&var-metric=duration&var-groupBy=resource.service.namespace&var-durationPercentiles=0.9&actionView=traceList"
       },
       {
         "asDropdown": true,
@@ -4839,7 +4839,7 @@
         "title": "Traces en erreur",
         "tooltip": "",
         "type": "link",
-        "url": "/a/grafana-exploretraces-app/explore?var-ds=P00A3D75A1D30EF0D&var-primarySignal=nestedSetParent%3C0&var-filters=resource.service.name%7C%3D%7C${service_name}&var-metric=errors&var-groupBy=resource.service.namespace&var-durationPercentiles=0.9&actionView=traceList"
+        "url": "/a/grafana-exploretraces-app/explore?var-ds=P00A3D75A1D30EF0D&var-primarySignal=true&var-filters=resource.service.name%7C%3D%7C${service_name}&var-metric=errors&var-groupBy=resource.service.namespace&var-durationPercentiles=0.9&actionView=traceList"
       },
       {
         "asDropdown": true,
